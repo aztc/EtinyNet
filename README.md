@@ -9,7 +9,7 @@ We deploy the int8 quantized EtinyNet-1.0 on STM32H743 MCU for running object cl
 
 
 
-In fact, the EtinyNet can exhibit its powerful performance on the specially designed CNN accelerator TinyNPU. Since EtinyNet comsumes only ~800KB memory (except fully-connected layer), TinyNPU can runs it in a single-chip mannar without accessing off-chip memory, saving much energy and latency caused by data transmission. We build a system based on TinyNPU + MCU(STM32L4R9), in which the MCU runs pre-processsing and post-processing while TinyNPU runs CNN workloads. TinyNPU connects with MCU via SDIO/SPI interface. The system has a really simple working pipeline as: 1) MCU sends image to TinyNPU, 2) TinyNPU runs CNNs, 3) TinyNPU sends results back. 
+In fact, the EtinyNet can exhibit its powerful performance on the specially designed CNN accelerator TinyNPU. Since EtinyNet comsumes only ~800KB memory (except fully-connected layer), TinyNPU can runs it in a single-chip mannar without accessing off-chip memory, saving much energy and latency caused by data transmission. We build a system based on TinyNPU + MCU(STM32L4R9), in which the MCU runs pre-processsing and post-processing while TinyNPU runs CNN workloads. TinyNPU stores weights and feature maps on chip and connects with MCU via SDIO/SPI interface to transmite images and results. The system has a really simple working pipeline as: 1) MCU sends image to TinyNPU, 2) TinyNPU runs CNNs, 3) TinyNPU sends results back. 
 
 Here's a video presents the prototype system.
 
