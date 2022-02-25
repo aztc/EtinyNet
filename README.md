@@ -39,10 +39,15 @@ Here's a video that presents the prototype system.
 
 
 We provide the training code for EtinyNet-1.0 (no quantization) as well as the coresponding test code and well-trained parameters, as listed below:
+
 train_imagenet.py: training code. The default input size is 224, 300 epoches and  128 batchsize x 8 gpus.
+
 etinynet.py: EtinyNet-1.0.
+
 0.6553-imagenet-mobilenet_lite313_477k_nownorm_4433_224-293-best.py: well-trained parameters for EtinyNet-1.0 (no quantization)
+
 test_imagenet.py : training code.
+
 The MXNet toolbox and '.rec' compressed ImageNet data file were used for training efficiency. Please refer to https://mxnet.incubator.apache.org/versions/1.9.0/ for more detail about '.rec' data.
 
 
