@@ -24,11 +24,16 @@ Table 1. Comparison of state-of-the-art small networks over classification accur
 
 We deploy the int8 quantized EtinyNet-1.0 on STM32H743 MCU for running object classification and detection. Results are in Tabel 2.
 
+Tabel 2. Comparison to MCU designs on ImageNet. EtinyNet obtains the record accuracy of64.7% and 65.8% on STM32F412 and STM32F746.
+| Model| STM32F412 |  STM32F746 |
+| ---- | -- |-- |-- |
+| Rusciet al.  | 60.2% |--|
+| MCUNet       | 62.2% |63.5%|
+| EtinyNet-1.0 | 64.7% |65.8%|
 
+In fact, the EtinyNet can exhibit its powerful performance on the specially designed CNN accelerator TinyNPU. Since EtinyNet comsumes only ~800KB memory (except fully-connected layer), TinyNPU can runs it in a single-chip mannar without accessing off-chip memory, saving much energy and latency caused by data transmission. We build a system based on TinyNPU + MCU(STM32L4R9), in which the MCU runs pre-processsing and post-processing while TinyNPU runs EtinyNet. TinyNPU stores weights and feature maps on chip and connects with MCU via SDIO/SPI interface to transmite images and results. The system has a really simple working pipeline as: 1) MCU sends image to TinyNPU, 2) TinyNPU runs EtinyNet, 3) TinyNPU sends results back. With the TinyNPU, we prompt the throughput of entire system to 30fps and reache an extremelly low processing power of 160mW (MCU + TinyNPU)。
 
-In fact, the EtinyNet can exhibit its powerful performance on the specially designed CNN accelerator TinyNPU. Since EtinyNet comsumes only ~800KB memory (except fully-connected layer), TinyNPU can runs it in a single-chip mannar without accessing off-chip memory, saving much energy and latency caused by data transmission. We build a system based on TinyNPU + MCU(STM32L4R9), in which the MCU runs pre-processsing and post-processing while TinyNPU runs EtinyNet. TinyNPU stores weights and feature maps on chip and connects with MCU via SDIO/SPI interface to transmite images and results. The system has a really simple working pipeline as: 1) MCU sends image to TinyNPU, 2) TinyNPU runs EtinyNet, 3) TinyNPU sends results back. 
-
-Here's a video presents the prototype system.
+Here's a video that presents the prototype system.
 
 [![EtinyNet](https://i9.ytimg.com/vi/mIZPxtJ-9EY/mq3.jpg?sqp=COju4ZAG&rs=AOn4CLDglN9ujGc3h1syZAd-s9PNYzD9-Q)](https://www.youtube.com/watch?v=mIZPxtJ-9EY)
 
@@ -38,6 +43,6 @@ train_imagenet.py: training code. The default input size is 224, 300 epoches and
 etinynet.py: EtinyNet-1.0.
 0.6553-imagenet-mobilenet_lite313_477k_nownorm_4433_224-293-best.py: well-trained parameters for EtinyNet-1.0 (no quantization)
 test_imagenet.py : training code.
-The MXNet toolbox and '.rec' compressed ImageNet data file were used for training efficiency. Please refer to "https://mxnet.incubator.apache.org/versions/1.9.0/" for more detail about '.rec' data.
+The MXNet toolbox and '.rec' compressed ImageNet data file were used for training efficiency. Please refer to https://mxnet.incubator.apache.org/versions/1.9.0/ for more detail about '.rec' data.
 
 
