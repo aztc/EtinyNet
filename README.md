@@ -26,10 +26,10 @@ We deploy the int8 quantized EtinyNet-1.0 on STM32H743 MCU for running object cl
 
 Tabel 2. Comparison to MCU designs on ImageNet. EtinyNet obtains the record accuracy of64.7% and 65.8% on STM32F412 and STM32F746.
 | Model| STM32F412 |  STM32F746 |
-| ---- | -- |-- |-- |
+| ---- | -- |-- |
 | Rusciet al.  | 60.2% |--|
 | MCUNet       | 62.2% |63.5%|
-| EtinyNet-1.0 | 64.7% |65.8%|
+| EtinyNet-1.0 | **64.7%** |**65.8%**|
 
 In fact, the EtinyNet can exhibit its powerful performance on the specially designed CNN accelerator TinyNPU. Since EtinyNet comsumes only ~800KB memory (except fully-connected layer), TinyNPU can runs it in a single-chip mannar without accessing off-chip memory, saving much energy and latency caused by data transmission. We build a system based on TinyNPU + MCU(STM32L4R9), in which the MCU runs pre-processsing and post-processing while TinyNPU runs EtinyNet. TinyNPU stores weights and feature maps on chip and connects with MCU via SDIO/SPI interface to transmite images and results. The system has a really simple working pipeline as: 1) MCU sends image to TinyNPU, 2) TinyNPU runs EtinyNet, 3) TinyNPU sends results back. With the TinyNPU, we prompt the throughput of entire system to 30fps and reache an extremelly low processing power of 160mW (MCU + TinyNPU)。
 
