@@ -5,7 +5,7 @@ EtinyNet is an extremely tiny CNN backbone for Tiny Machine Learning (TinyML) th
 We currently provide two settings of EtinyNet-1.0 and EtinyNet-0.75, which have only 477K and parameters and 360K parameters. The performance of these two models on ImageNet and comparisons with other state-of-the-art lightweight models are shwon below.
 
 Table 1. Comparison of state-of-the-art small networks over classification accuracy, the model size and MAdds on ImageNet-1000 dataset. “-” mean no reported results available. The input size is 224x224.
-| Model| Params.(M) |  Top-1 Acc.| Top-5 Acc.|
+| Model| Params.(M) |  Top-1 Acc. (%)| Top-5 Acc. (%)|
 | ---- | -- |-- |-- |
 | MobileNeXt-0.35 | 1.8 |64.7|-|
 | MnasNet-A1-0.35 | 1.7 |64.4|85.1|
